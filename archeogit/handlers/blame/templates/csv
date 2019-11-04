@@ -1,0 +1,2 @@
+commit,path,contributor,frequency{% for (path, excavations) in excavation.items() %}{% for (modifier, frequency) in excavations %}
+{{ commit.id }},{{ path }},{{ modifier }},{{ frequency }}{% endfor %}{% endfor %}

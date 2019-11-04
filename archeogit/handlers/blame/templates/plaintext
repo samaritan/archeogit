@@ -1,0 +1,5 @@
+{% for (path, excavations) in excavation.items() %}{{ path }}
+{% for (modifier, frequency) in excavations %}
+| Contributor                              | Frequency |
+| ---------------------------------------- | --------- |
+| {{ modifier }} | {{ '%9d'|format(frequency) }} |{% endfor %} {% endfor %}
