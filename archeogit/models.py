@@ -10,6 +10,12 @@ class Line:
 
 
 @dataclasses.dataclass(frozen=True)
+class Modifier:
+    sha: str
+    path: str
+
+
+@dataclasses.dataclass(frozen=True)
 class Section:
     header: List[int]
     body: Dict[str, int]

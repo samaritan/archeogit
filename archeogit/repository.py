@@ -1,6 +1,7 @@
 import pygit2
 
-from .models import Hunk, Line, Section
+from . import utilities
+from .models import Hunk, Line, Modifier, Section
 
 
 def _get_diff(commit, parent=None):
@@ -82,14 +83,14 @@ class Repository(pygit2.Repository):
     def blamelines(self, commit, path, lines):
         modifiers = list()
 
-        if commit.parents:
-            parent = commit.parents[0]
-            blame = self.blame(path, newest_commit=parent.id)
-        else:
-            blame = self.blame(path)
+        lines = ' '.join(f'-L {l},{l}' for l in lines)
+        command = f'git blame {commit.id}^ --show-name -l {lines} -- {path}'
 
-        for line in lines:
-            hunk = blame.for_line(line)
-            modifiers.append(hunk.orig_commit_id)
+        stream, thread = utilities.run(command, self.path)
+        for line in stream:
+            components = line.split()
+            modifier = Modifier(sha=components[0], path=components[1])
+            modifiers.append(modifier)
+        thread.join()
 
         return modifiers

@@ -3,4 +3,4 @@
 
 | Contributor                              | Frequency |
 | ---------------------------------------- | --------- |{% for (modifier, frequency) in excavations %}
-| {{ modifier }} | {{ '%9d'|format(frequency) }} |{% endfor %} {% endfor %}
+| {{ modifier.sha }} | {{ '%9d'|format(frequency) }} |{% endfor %} {% endfor %}
