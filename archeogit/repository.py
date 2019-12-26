@@ -84,7 +84,7 @@ class Repository(pygit2.Repository):
         modifiers = list()
 
         lines = ' '.join(f'-L {l},{l}' for l in lines)
-        command = f'git blame {commit.id}^ --show-name -l {lines} -- {path}'
+        command = f'git blame {commit.id}^ --show-name -l -w {lines} -- {path}'
 
         stream, thread = utilities.run(command, self.path)
         for line in stream:
