@@ -6,7 +6,7 @@ def _validate(arguments):
     _validate_configfile(arguments.config_file)
 
 
-def _validate(config_file):
+def _validate_configfile(config_file):
     if not os.path.exists(config_file):
         msg = f'Configuration file {config_file} not found.'
         raise argparse.ArgumentError(None, msg)
