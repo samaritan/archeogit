@@ -5,7 +5,7 @@ import re
 from .blame import BlameHandler
 from ...repository import Repository
 
-_SHA1_RE = re.compile(r'\b[0-9a-f]{,40}\b')
+_SHA1_RE = re.compile(r'^[0-9a-f]{7,40}$')
 
 
 def validate(arguments):
