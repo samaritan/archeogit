@@ -16,16 +16,16 @@ def _validate(arguments):
 def _validate_repository(repository):
     if not os.path.exists(repository):
         msg = f'{repository} does not exist.'
-        raise argparse.ArgumentException(None, msg)
+        raise argparse.ArgumentError(None, msg)
     if not os.path.exists(os.path.join(repository, '.git')):
         msg = f'{repository} not a valid git repository.'
-        raise argparse.ArgumentException(None, msg)
+        raise argparse.ArgumentError(None, msg)
 
 
 def _validate_commit(commit):
     if not _SHA1_RE.match(commit):
         msg = f'{commit} is not a valid SHA-1'
-        raise argparse.ArgumentException(None, msg)
+        raise argparse.ArgumentError(None, msg)
 
 
 def handler(arguments):
