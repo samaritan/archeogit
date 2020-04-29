@@ -27,7 +27,9 @@ class CLI:
         self._attach_subparsers(subparsers, commands, handlers)
 
     def get_arguments(self):
-        return self._parser.parse_args()
+        arguments = self._parser.parse_args()
+        _validate(arguments)
+        return arguments
 
     def _attach_subparsers(self, subparsers, commands, handlers):
         for command in commands:
