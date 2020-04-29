@@ -2,7 +2,7 @@ import argparse
 import os
 
 
-def _validate(arguments):
+def validate(arguments):
     _validate_configfile(arguments.config_file)
 
 
@@ -28,7 +28,7 @@ class CLI:
 
     def get_arguments(self):
         arguments = self._parser.parse_args()
-        _validate(arguments)
+        validate(arguments)
         return arguments
 
     def _attach_subparsers(self, subparsers, commands, handlers):

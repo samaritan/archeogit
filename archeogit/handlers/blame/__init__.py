@@ -8,7 +8,7 @@ from ...repository import Repository
 _SHA1_RE = re.compile(r'\b[0-9a-f]{,40}\b')
 
 
-def _validate(arguments):
+def validate(arguments):
     _validate_repository(arguments.repository)
     _validate_commit(arguments.commit)
 
@@ -29,7 +29,7 @@ def _validate_commit(commit):
 
 
 def handler(arguments):
-    _validate(arguments)
+    validate(arguments)
 
     repository = Repository(arguments.repository)
     commit = repository.get(arguments.commit)
