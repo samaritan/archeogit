@@ -4,6 +4,7 @@ import tempfile
 
 import pytest
 
+from tests import DATA_ROOT
 from archeogit.handlers import blame
 
 
@@ -36,3 +37,12 @@ def test_validate_raises_argumenterror_commit(commit):
 def test_validate():
     arguments = _get_arguments(os.getcwd(), 'eff9507')
     assert blame.validate(arguments) is None
+
+
+def test_handler_raises_exception():
+    repository = os.path.join(DATA_ROOT, 'ffmpeg')
+    commit = '91d19754d46acd4a639a8b9e31f50f31c78f8c9c'
+    arguments = _get_arguments(repository, commit)
+    pattern = '.* is not a valid SHA-1 in .*'
+    with pytest.raises(Exception, match=pattern):
+        blame.handler(arguments)
