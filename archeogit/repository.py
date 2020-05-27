@@ -28,8 +28,9 @@ def _get_lines(hunk):
 
     for line in hunk.lines:
         origin = line.origin
-        lineno = line.new_lineno if origin == '+' else line.old_lineno
-        lines.append(Line(lineno, origin))
+        if origin in {'+', '-', ' '}:
+            lineno = line.new_lineno if origin == '+' else line.old_lineno
+            lines.append(Line(lineno, origin))
 
     return lines
 

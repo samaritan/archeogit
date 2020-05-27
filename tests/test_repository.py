@@ -39,3 +39,17 @@ def test_get_sections():
     }
     actual = repository.get_sections(commit)
     assert actual == expected
+
+
+def test_get_sections_newline_change():
+    repository = Repository(REPOSITORY_PATH)
+    commit = repository.get('3c7a2a0b92e670a1dc70be3198ece2646f25d495')
+    expected = {
+        'tests/ref/fate/vc1test_smm0005': [
+            Section(
+                header=[26, 27, 28], body={'-': [29], '+': [29]}, footer=[]
+            )
+        ]
+    }
+    actual = repository.get_sections(commit)
+    assert actual == expected
