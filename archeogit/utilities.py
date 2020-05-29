@@ -1,6 +1,7 @@
 import io
 import json
 import logging
+import platform
 import subprocess
 import sys
 import threading
@@ -25,7 +26,7 @@ def run(command, directory):
             logger.error(error)
 
     process = subprocess.Popen(
-        command, cwd=directory, shell=True,
+        command, cwd=directory, shell=not platform.system() == 'Windows',
         stdout=subprocess.PIPE, stderr=subprocess.PIPE
     )
     ostream = io.TextIOWrapper(process.stdout, errors='replace')
