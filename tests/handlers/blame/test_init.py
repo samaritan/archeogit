@@ -4,7 +4,7 @@ import tempfile
 
 import pytest
 
-from tests import DATA_ROOT
+from tests import DATA_ROOT, requirerepositoryfortest
 from archeogit.handlers import blame
 
 
@@ -39,6 +39,7 @@ def test_validate():
     assert blame.validate(arguments) is None
 
 
+@requirerepositoryfortest('ffmpeg')
 def test_handler_raises_exception():
     repository = os.path.join(DATA_ROOT, 'ffmpeg')
     commit = '91d19754d46acd4a639a8b9e31f50f31c78f8c9c'
