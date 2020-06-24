@@ -2,17 +2,12 @@ import os
 
 import pytest
 
-from . import DATA_ROOT
+from . import DATA_ROOT, requirerepositoryformodule
 from archeogit.models import Section
 from archeogit.repository import Repository
 
-
-REPOSITORY_PATH = os.path.join(DATA_ROOT, 'ffmpeg', '.git')
-if not os.path.exists(REPOSITORY_PATH):
-    pytest.skip(
-        'Test repository not found. Use `git submodule` to clone.',
-        allow_module_level=True
-    )
+requirerepositoryformodule('ffmpeg')
+REPOSITORY_PATH = os.path.join(DATA_ROOT, 'ffmpeg')
 
 
 def test_get_sections():
