@@ -7,7 +7,7 @@ from archeogit.models import Section
 from archeogit.repository import Repository
 
 
-REPOSITORY_PATH = os.path.join(DATA_ROOT, 'ffmpeg')
+REPOSITORY_PATH = os.path.join(DATA_ROOT, 'ffmpeg', '.git')
 if not os.path.exists(REPOSITORY_PATH):
     pytest.skip(
         'Test repository not found. Use `git submodule` to clone.',
