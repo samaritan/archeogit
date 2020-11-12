@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='archeogit',
-    version='0.2.0',
+    version='0.2.1',
     packages=['archeogit'],
     install_requires=['jinja2~=2.10', 'pygit2~=0.28'],
     entry_points={
