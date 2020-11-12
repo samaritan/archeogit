@@ -16,9 +16,10 @@ def _get_hunks(commit):
     parent = commit.parents[0] if commit.parents else None
     for patch in _get_diff(commit, parent):
         path = patch.delta.new_file.path
-        hunks[path] = list()
-        for hunk in patch.hunks:
-            hunks[path].append(Hunk(lines=_get_lines(hunk)))
+        if patch.hunks:
+            hunks[path] = list()
+            for hunk in patch.hunks:
+                hunks[path].append(Hunk(lines=_get_lines(hunk)))
 
     return hunks
 
