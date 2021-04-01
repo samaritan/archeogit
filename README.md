@@ -2,6 +2,8 @@
 
 `archeogit` is a Python utility to excavate a git repository in search of information.
 
+The utility dentifies the change (commit, file, line) that last modified a line of code. Useful for identifying which change likely contributed to a vulnerability. Uses `git blame`.
+
 ## Installation
 
 If you desire isolation of the environment onto which `archeogit`, and its dependencies are installed, setup and activate a virtual environment using `virtualenv --python=python3 .venv` and `. .venv/bin/activate`, respectively. Run `pip install -e .` or the included `./install.sh` to install `archeogit`.
