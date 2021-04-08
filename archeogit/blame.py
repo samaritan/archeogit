@@ -1,4 +1,5 @@
 import logging
+from . import excluder
 
 logger = logging.getLogger(__name__)
 
@@ -18,6 +19,8 @@ def blame(repository, commit):
     commits = dict()
     sections = repository.get_sections(commit)
     for path in sections:
+        if excluder.exclude(path):
+            continue
         suspects = _get_suspects(sections[path])
         commits[path] = repository.blamelines(commit, path, suspects)
     return commits
