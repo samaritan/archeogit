@@ -37,5 +37,6 @@ def handler(arguments):
         msg = f'{arguments.commit} is not a valid SHA-1 in '                  \
               f'{arguments.repository}'
         raise Exception(msg)
-    _handler = BlameHandler(repository, commit, arguments.csv)
+    _handler = BlameHandler(
+        repository, commit, arguments.csv, arguments.enable_filters)
     _handler.handle()

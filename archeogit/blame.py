@@ -1,5 +1,4 @@
 import logging
-from . import excluder
 
 logger = logging.getLogger(__name__)
 
@@ -15,12 +14,14 @@ def _get_suspects(sections):
     return sorted(list(set(suspects)))
 
 
-def blame(repository, commit):
+def blame(repository, commit, filters):
     commits = dict()
     sections = repository.get_sections(commit)
-    for path in sections:
-        if excluder.exclude(path):
-            continue
+    paths = list(sections.keys())
+    for filter_object in filters:
+        paths = filter(filter_object.do_filter, paths)
+
+    for path in paths:
         suspects = _get_suspects(sections[path])
         commits[path] = repository.blamelines(commit, path, suspects)
     return commits

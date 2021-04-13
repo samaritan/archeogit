@@ -21,3 +21,6 @@ class BlameCommand(BaseCommand):
             'format. If unspecified, the output is plaintext formatted '
             'suitable for human consumption.'
         )
+        parser.add_argument(
+            '--enable-filters', help='Add filters to exclude paths from results'
+        )
