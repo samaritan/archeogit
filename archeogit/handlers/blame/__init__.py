@@ -4,8 +4,15 @@ import re
 
 from .blame import BlameHandler
 from ...repository import Repository
+from ...filters import TestsFilter, DocumentationFilter, NonSourceFilter
 
 _SHA1_RE = re.compile(r'^[0-9a-f]{7,40}$')
+
+
+def get_filters():
+    filters = {"test": TestsFilter, "docs": DocumentationFilter,
+               "nonsource": NonSourceFilter}
+    return filters
 
 
 def validate(arguments):

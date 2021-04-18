@@ -1,5 +1,6 @@
 import logging
 
+from . import get_filters
 from ... import blame, utilities, filters
 from .formatters import CSVFormatter, PlaintextFormatter
 
@@ -7,11 +8,11 @@ logger = logging.getLogger(__name__)
 
 
 class BlameHandler:
-    def __init__(self, repository, commit, csv, enable_filters):
+    def __init__(self, repository, commit, csv, filters):
         self._repository = repository
         self._commit = commit
         self._csv = csv
-        self._enable_filters = enable_filters
+        self._filters = filters
 
     def handle(self):
         commits = blame.blame(
@@ -23,7 +24,8 @@ class BlameHandler:
 
     def extract_filters(self):
         filter_list = []
-        for filter in self._enable_filters.split(','):
-            if filter == "tests":
-                filter_list.append(filters.TestsFilter())
+        filters = get_filters()
+        if self._filters:
+            for a_filter in self._filters.split(','):
+                filter_list.append(filters[a_filter])
         return filter_list

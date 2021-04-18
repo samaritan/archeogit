@@ -1,17 +1,18 @@
 class Filter():
-    def __init__(self):
-        pass
-
-    def do_filter(self, path):
+    def __call__(self, path):
         pass
 
 
 class TestsFilter(Filter):
-    def __init__(self):
+    def __call__(self, path):
+        return not ("Test" in path or "test" in path.split("/"))
+
+
+class NonSourceFilter(Filter):
+    def __call__(self, path):
         pass
 
-    def do_filter(self, path):
-        if "Test" in path or "test" in path.split("/"):
-            return False
-        else:
-            return True
+
+class DocumentationFilter(Filter):
+    def __call__(self, path):
+        return "docs" not in path.split("/")

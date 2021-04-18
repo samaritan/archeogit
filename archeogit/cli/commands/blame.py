@@ -22,5 +22,5 @@ class BlameCommand(BaseCommand):
             'suitable for human consumption.'
         )
         parser.add_argument(
-            '--enable-filters', help='Add filters to exclude paths from results'
+            '--filters', help='Add filters to exclude paths from results'
         )
