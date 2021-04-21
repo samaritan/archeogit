@@ -1,3 +1,9 @@
+def get_filters():
+    filters = {"test": TestsFilter(), "docs": DocumentationFilter(),
+               "nonsource": NonSourceFilter()}
+    return filters
+
+
 class Filter():
     def __call__(self, path):
         pass

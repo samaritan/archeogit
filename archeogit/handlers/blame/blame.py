@@ -1,7 +1,7 @@
 import logging
 
-from . import get_filters
-from ... import blame, utilities, filters
+from ... import blame, utilities
+from ...filters import get_filters
 from .formatters import CSVFormatter, PlaintextFormatter
 
 logger = logging.getLogger(__name__)
@@ -25,7 +25,9 @@ class BlameHandler:
     def extract_filters(self):
         filter_list = []
         filters = get_filters()
+        print(filters)
         if self._filters:
             for a_filter in self._filters.split(','):
                 filter_list.append(filters[a_filter])
+        print(filter_list)
         return filter_list

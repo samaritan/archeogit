@@ -18,8 +18,8 @@ def blame(repository, commit, filters):
     commits = dict()
     sections = repository.get_sections(commit)
     paths = list(sections.keys())
-    for filter_object in filters:
-        paths = filter(filter_object.do_filter, paths)
+    for filter_class in filters:
+        paths = filter(filter_class.__call__, paths)
 
     for path in paths:
         suspects = _get_suspects(sections[path])
