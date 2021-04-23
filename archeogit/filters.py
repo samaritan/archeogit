@@ -1,3 +1,8 @@
+from . import utilities
+
+LANGUAGES = utilities.JSON.read("archeogit/languages.json")
+
+
 def get_filters():
     filters = {"test": TestsFilter(), "docs": DocumentationFilter(),
                "nonsource": NonSourceFilter()}

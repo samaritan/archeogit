@@ -25,9 +25,7 @@ class BlameHandler:
     def extract_filters(self):
         filter_list = []
         filters = get_filters()
-        print(filters)
         if self._filters:
             for a_filter in self._filters.split(','):
                 filter_list.append(filters[a_filter])
-        print(filter_list)
         return filter_list
