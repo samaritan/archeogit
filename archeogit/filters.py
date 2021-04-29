@@ -1,6 +1,5 @@
 from . import utilities
-
-LANGUAGES = utilities.JSON.read("archeogit/languages.json")
+import re
 
 
 def get_filters():
@@ -15,8 +14,11 @@ class Filter():
 
 
 class TestsFilter(Filter):
+    def __init__(self):
+        self._regex = re.compile(r'\b(tests?|spec)\b')
+
     def __call__(self, path):
-        return not ("Test" in path or "test" in path.split("/"))
+        return not bool(self._regex.search(path))
 
 
 class NonSourceFilter(Filter):
