@@ -29,7 +29,8 @@ class NonSourceFilter(Filter):
         return self._regex.search(path) is not None
 
     def create_regex(self):
-        source_file_extensions = ['java', 'c', 'h']
+        source_file_extensions = ['java', 'c', 'h', 'cats', 'idc' 'cpp', 'c++', 'cc', 'cp', 'cxx',
+                                  'h++', 'hh', 'hpp', 'hxx', 'inc', 'inl', 'ino', 'ipp', 're', 'tcc', 'tpp']
         return re.compile(fr"^.*\.({'|'.join(source_file_extensions)})")
 
 
