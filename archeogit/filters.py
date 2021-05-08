@@ -3,8 +3,8 @@ import re
 
 
 def get_filters():
-    filters = {"test": TestsFilter(), "docs": DocumentationFilter(),
-               "nonsource": NonSourceFilter()}
+    filters = {'test': TestsFilter(), 'docs': DocumentationFilter(),
+               'nonsource': NonSourceFilter()}
     return filters
 
 
@@ -18,7 +18,7 @@ class TestsFilter(Filter):
         self._regex = re.compile(r'\b(tests?|spec)\b')
 
     def __call__(self, path):
-        return not bool(self._regex.search(path))
+        return self._regex.search(path) is None
 
 
 class NonSourceFilter(Filter):
@@ -26,17 +26,11 @@ class NonSourceFilter(Filter):
         self._regex = self.create_regex()
 
     def __call__(self, path):
-        return bool(self._regex.search(path))
+        return self._regex.search(path) is not None
 
     def create_regex(self):
-        source_file_extensions = ["java", "c", "h"]
-
-        non_source_regex_segment = r''
-        for extension in source_file_extensions:
-            non_source_regex_segment += (extension + '|')
-        non_source_regex_segment = non_source_regex_segment[0:-1]
-        # Expression looks for nonsource files in list and paths without extension
-        return re.compile(r'^.*\.(' + non_source_regex_segment + r')')
+        source_file_extensions = ['java', 'c', 'h']
+        return re.compile(fr"^.*\.({'|'.join(source_file_extensions)})")
 
 
 class DocumentationFilter(Filter):
@@ -44,4 +38,4 @@ class DocumentationFilter(Filter):
         self._regex = re.compile(r'\b(docs?)\b')
 
     def __call__(self, path):
-        return not bool(self._regex.search(path))
+        return self._regex.search(path) is None
