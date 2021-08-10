@@ -3,7 +3,7 @@ import os
 import re
 
 from .blame import BlameHandler
-from ...filters import get_filters
+from ...filters import FILTERS
 from ...repository import Repository
 
 _SHA1_RE = re.compile(r'^[0-9a-f]{7,40}$')
@@ -40,8 +40,7 @@ def handler(arguments):
         raise Exception(msg)
     filters = list()
     if arguments.filters is not None:
-        filters = get_filters()
-        filters = [filters[f] for f in arguments.filters]
+        filters = [FILTERS[f] for f in arguments.filters]
     _handler = BlameHandler(
         repository, commit, arguments.csv, filters)
     _handler.handle()

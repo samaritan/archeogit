@@ -1,7 +1,6 @@
 import logging
 
 from ... import blame, utilities
-from ...filters import get_filters
 from .formatters import CSVFormatter, PlaintextFormatter
 
 logger = logging.getLogger(__name__)

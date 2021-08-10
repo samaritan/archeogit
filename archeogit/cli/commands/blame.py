@@ -23,6 +23,6 @@ class BlameCommand(BaseCommand):
             'suitable for human consumption.'
         )
         parser.add_argument(
-            '--filters', nargs='*', choices=filters.get_filters().keys(),
+            '--filters', nargs='*', choices=filters.FILTERS.keys(),
             help='Add filters to prevent certain files from being blamed.'
         )
