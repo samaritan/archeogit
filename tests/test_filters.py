@@ -14,7 +14,7 @@ def test_tests_filter():
 
 
 def test_nonsource_filter():
-    paths = ['docs/conf/httpd.conf.in', '/src/program.java',
+    paths = ['/src/program.java',
              '/src/program.c', '/docs/archeogit.py', 'CHANGES', '/src/program.pysomething']
     expected = {'/src/program.c', '/src/program.java'}
 
@@ -25,7 +25,7 @@ def test_nonsource_filter():
 
 
 def test_documentation_filter():
-    paths = ['/docs', '/doc/file', '/tests/file', 'CHANGES']
+    paths = ['docs/conf/httpd.conf.in', '/docs', '/doc/file', '/tests/file', 'CHANGES']
     expected = {'/tests/file', 'CHANGES'}
 
     documentation_filter = DocumentationFilter()

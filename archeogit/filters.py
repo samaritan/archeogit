@@ -31,7 +31,9 @@ class NonSourceFilter(Filter):
     def create_regex(self):
         source_file_extensions = ['java', 'c', 'h', 'cats', 'idc', 'cpp', 'c\+\+', 'cc', 'cp', 'cxx',
                                   'h\+\+', 'hh', 'hpp', 'hxx', 'inc', 'inl', 'ino', 'ipp', 're', 'tcc', 'tpp']
-        extensions = '|'.join(source_file_extensions)
+        configuration_file_extensions = ['in']
+        extensions = '|'.join(source_file_extensions +
+                configuration_file_extensions)
         return re.compile(fr'.*\.({extensions})$.*')
 
 
