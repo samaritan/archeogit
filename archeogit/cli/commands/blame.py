@@ -1,3 +1,4 @@
+from ... import filters
 from .base import BaseCommand
 
 
@@ -22,5 +23,6 @@ class BlameCommand(BaseCommand):
             'suitable for human consumption.'
         )
         parser.add_argument(
-            '--filters', help='Add filters to exclude paths from results'
+            '--filters', nargs='*', choices=filters.get_filters().keys(),
+            help='Add filters to prevent certain files from being blamed.'
         )

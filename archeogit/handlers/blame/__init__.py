@@ -40,10 +40,8 @@ def handler(arguments):
         raise Exception(msg)
     filters = list()
     if arguments.filters is not None:
-        filters = [
-            v for k, v in get_filters().items()
-            if k in set(arguments.filters.split(','))
-        ]
+        filters = get_filters()
+        filters = [filters[f] for f in arguments.filters]
     _handler = BlameHandler(
         repository, commit, arguments.csv, filters)
     _handler.handle()
