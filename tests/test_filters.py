@@ -5,7 +5,7 @@ from archeogit.filters import TestsFilter, NonSourceFilter, DocumentationFilter
 
 def test_tests_filter():
     paths = ['/test/file', '/spec/file', '/tests/file', '/specs/file2']
-    expected = {['/specs/file2']}
+    expected = {'/specs/file2'}
 
     tests_filter = TestsFilter()
     actual = set(filter(tests_filter.__call__, paths))
