@@ -14,10 +14,15 @@ def _get_suspects(sections):
     return sorted(list(set(suspects)))
 
 
-def blame(repository, commit):
+def blame(repository, commit, filters=None):
     commits = dict()
     sections = repository.get_sections(commit)
-    for path in sections:
+    paths = list(sections.keys())
+    if filters is not None:
+        for filter_class in filters:
+            paths = filter(filter_class.__call__, paths)
+
+    for path in paths:
         suspects = _get_suspects(sections[path])
         commits[path] = repository.blamelines(commit, path, suspects)
     return commits

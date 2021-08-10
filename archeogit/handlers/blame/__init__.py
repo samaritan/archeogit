@@ -3,6 +3,7 @@ import os
 import re
 
 from .blame import BlameHandler
+from ...filters import FILTERS
 from ...repository import Repository
 
 _SHA1_RE = re.compile(r'^[0-9a-f]{7,40}$')
@@ -37,5 +38,9 @@ def handler(arguments):
         msg = f'{arguments.commit} is not a valid SHA-1 in '                  \
               f'{arguments.repository}'
         raise Exception(msg)
-    _handler = BlameHandler(repository, commit, arguments.csv)
+    filters = arguments.filters
+    if filters is not None:
+        filters = [FILTERS[f] for f in filters]
+    _handler = BlameHandler(
+        repository, commit, arguments.csv, filters)
     _handler.handle()

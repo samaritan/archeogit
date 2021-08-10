@@ -1,3 +1,4 @@
+from ... import filters
 from .base import BaseCommand
 
 
@@ -20,4 +21,8 @@ class BlameCommand(BaseCommand):
             '--csv', action='store_true', help='Generate output in CSV '
             'format. If unspecified, the output is plaintext formatted '
             'suitable for human consumption.'
+        )
+        parser.add_argument(
+            '--filters', nargs='*', choices=filters.FILTERS.keys(),
+            help='Add filters to prevent certain files from being blamed.'
         )
