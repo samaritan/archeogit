@@ -16,16 +16,8 @@ class BlameHandler:
 
     def handle(self):
         commits = blame.blame(
-            self._repository, self._commit, self.extract_filters())
+            self._repository, self._commit, self._filters)
         formatter = PlaintextFormatter()
         if self._csv:
             formatter = CSVFormatter()
         utilities.to_stdout(formatter.format(self._commit, commits))
-
-    def extract_filters(self):
-        filter_list = []
-        filters = get_filters()
-        if self._filters:
-            for a_filter in self._filters.split(','):
-                filter_list.append(filters[a_filter])
-        return filter_list
