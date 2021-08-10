@@ -38,9 +38,9 @@ def handler(arguments):
         msg = f'{arguments.commit} is not a valid SHA-1 in '                  \
               f'{arguments.repository}'
         raise Exception(msg)
-    filters = list()
-    if arguments.filters is not None:
-        filters = [FILTERS[f] for f in arguments.filters]
+    filters = arguments.filters
+    if filters is not None:
+        filters = [FILTERS[f] for f in filters]
     _handler = BlameHandler(
         repository, commit, arguments.csv, filters)
     _handler.handle()
