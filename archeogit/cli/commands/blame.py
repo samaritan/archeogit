@@ -15,6 +15,9 @@ class BlameCommand(BaseCommand):
             'locally.'
         )
         parser.add_argument(
+            'branch', help='Name of the default branch of the repository.'
+        )
+        parser.add_argument(
             'commit', help='SHA-1 of the commit known to have fixed the bug.'
         )
         parser.add_argument(

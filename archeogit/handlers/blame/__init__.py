@@ -1,4 +1,5 @@
 import argparse
+import logging
 import os
 import re
 
@@ -7,6 +8,7 @@ from ...filters import FILTERS
 from ...repository import Repository
 
 _SHA1_RE = re.compile(r'^[0-9a-f]{7,40}$')
+logger = logging.getLogger(__name__)
 
 
 def validate(arguments):
@@ -36,6 +38,11 @@ def handler(arguments):
     commit = repository.get(arguments.commit)
     if commit is None:
         msg = f'{arguments.commit} is not a valid SHA-1 in '                  \
+              f'{arguments.repository}'
+        raise Exception(msg)
+    branch = repository.branches.get(arguments.branch)
+    if branch is None:
+        msg = f'{arguments.branch} is not a valid branch in '                 \
               f'{arguments.repository}'
         raise Exception(msg)
     filters = arguments.filters
