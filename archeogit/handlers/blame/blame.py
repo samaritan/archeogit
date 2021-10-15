@@ -20,4 +20,5 @@ class BlameHandler:
         formatter = PlaintextFormatter()
         if self._csv:
             formatter = CSVFormatter()
-        utilities.to_stdout(formatter.format(self._commit, commits))
+        if commits:
+            utilities.to_stdout(formatter.format(self._commit, commits))
