@@ -14,8 +14,15 @@ def _get_suspects(sections):
     return sorted(list(set(suspects)))
 
 
-def blame(repository, commit, filters=None):
+def blame(repository, branch, commit, filters=None):
     commits = dict()
+    if branch not in set(repository.branches.with_commit(commit)):
+        logger.warn(
+            '`%s` is not in default branch of `%s`. Exiting.', commit.id,
+            repository.workdir
+        )
+        return commits
+
     sections = repository.get_sections(commit)
     paths = list(sections.keys())
     if filters is not None:

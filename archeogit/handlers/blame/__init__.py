@@ -49,5 +49,5 @@ def handler(arguments):
     if filters is not None:
         filters = [FILTERS[f] for f in filters]
     _handler = BlameHandler(
-        repository, commit, arguments.csv, filters)
+        repository, branch.branch_name, commit, arguments.csv, filters)
     _handler.handle()
