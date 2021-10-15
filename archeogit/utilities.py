@@ -23,7 +23,7 @@ def run(command, directory):
 
         error = stream.read()
         if error != '':
-            logger.error(error)
+            logger.error(error.rstrip())
 
     process = subprocess.Popen(
         command, cwd=directory, shell=not platform.system() == 'Windows',
