@@ -150,10 +150,6 @@ pip-selfcheck.json
 
 # Begin Custom Ignores
 
-# Transient Files
-configuration.json
-log.txt
-
 # Temporary Files and Directories
 scratch.py
 scratch/

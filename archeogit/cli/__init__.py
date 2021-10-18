@@ -18,8 +18,8 @@ class CLI:
             description='Command line utility to excavate a git repository.'
         )
         self._parser.add_argument(
-            '--config-file', default='configuration.json', help='Path to '
-            'the configuration file. Default is configuration.json.'
+            '--config-file', default='config.json', help='Path to the '
+            'configuration file. Default is config.json.'
         )
         subparsers = self._parser.add_subparsers(title='Supported Commands')
         subparsers.required = True

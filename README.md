@@ -10,9 +10,7 @@ If you desire isolation of the environment onto which `archeogit`, and its depen
 
 ## Configuration
 
-The utility requires certain configuration settings to run. The file `configuration.template.json` provides a template for the configuration file. Make a copy of the `configuration.template.json` file and rename it to `configuration.json`. Edit `configuration.json` to add appropriate configuration settings.
-
-The configuration file also has default settings for logging, which logs information level messages from the utility to console and file (`log.txt`).
+The utility uses a configuration file to configure logging. The default configuration file---`config.json`---gets you started with all messages with a level of `INFO` or higher being logged to the console. Use the `--config-file` option on the command line to use a custom configuration file.
 
 ## Usage
 
@@ -30,7 +28,7 @@ optional arguments:
   -h, --help            show this help message and exit
   --config-file CONFIG_FILE
                         Path to the configuration file. Default is
-                        configuration.json.
+                        config.json.
 
 Supported Commands:
   {blame}
