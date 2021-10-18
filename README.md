@@ -65,7 +65,7 @@ libavcodec/cbs_av1.c
 | c8c81ac5026c20ce60860dc9aa905e5e1634bed1 |        22 |
 2019-11-04 14:27:18,626 - archeogit - blame excavation took 0.83 seconds
 
-$ docker run --rm --name archeogit -v ~/repositories/:/repositories/ samaritan/archeogit:latest blame /repositories/ffmpeg/ b97a4b658814b2de8b9f2a3bce491c002d34de31
+$ docker run --rm --name archeogit -v /home/user/repositories/:/repositories/:ro samaritan/archeogit:latest blame /repositories/ffmpeg/ b97a4b658814b2de8b9f2a3bce491c002d34de31
 libavcodec/cbs_av1.c
 
 | Contributor                              | Frequency |
@@ -80,7 +80,7 @@ commit,path,contributor,frequency
 b97a4b658814b2de8b9f2a3bce491c002d34de31,libavcodec/cbs_av1.c,c8c81ac5026c20ce60860dc9aa905e5e1634bed1,22
 2019-11-04 14:27:22,798 - archeogit - blame excavation took 0.82 seconds
 
-$ docker run --rm --name archeogit -v ~/repositories/:/repositories/ samaritan/archeogit:latest blame /repositories/ffmpeg/ b97a4b658814b2de8b9f2a3bce491c002d34de31 --csv
+$ docker run --rm --name archeogit -v /home/user/repositories/:/repositories/:ro samaritan/archeogit:latest blame /repositories/ffmpeg/ b97a4b658814b2de8b9f2a3bce491c002d34de31 --csv
 commit,path,contributor,frequency
 b97a4b658814b2de8b9f2a3bce491c002d34de31,libavcodec/cbs_av1.c,c8c81ac5026c20ce60860dc9aa905e5e1634bed1,22
 2021-10-18 16:26:59,399 - archeogit - blame excavation took 0.05 seconds
