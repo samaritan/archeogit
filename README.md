@@ -16,6 +16,9 @@ The utility uses a configuration file to configure logging. The default configur
 
 The command line interface to the utility provides the ability to excavate different types of information from the git repository. The type of information to excavate is specified as a subcommand to the main interface.
 
+
+*Note*: `archeogit` is also available as a docker container. See the section with [examples](#example) for usage examples.
+
 ### Main Interface
 
 ```
@@ -61,6 +64,14 @@ libavcodec/cbs_av1.c
 | ---------------------------------------- | --------- |
 | c8c81ac5026c20ce60860dc9aa905e5e1634bed1 |        22 |
 2019-11-04 14:27:18,626 - archeogit - blame excavation took 0.83 seconds
+
+$ docker run --rm --name archeogit -v ~/repositories/:/repositories/ samaritan/archeogit:latest blame /repositories/ffmpeg/ b97a4b658814b2de8b9f2a3bce491c002d34de31
+libavcodec/cbs_av1.c
+
+| Contributor                              | Frequency |
+| ---------------------------------------- | --------- |
+| c8c81ac5026c20ce60860dc9aa905e5e1634bed1 |        22 | 
+2021-10-18 16:26:31,795 - archeogit - blame excavation took 0.05 seconds
 ```
 
 ```
@@ -68,6 +79,11 @@ $ archeogit blame ~/repositories/ffmpeg/ b97a4b658814b2de8b9f2a3bce491c002d34de3
 commit,path,contributor,frequency
 b97a4b658814b2de8b9f2a3bce491c002d34de31,libavcodec/cbs_av1.c,c8c81ac5026c20ce60860dc9aa905e5e1634bed1,22
 2019-11-04 14:27:22,798 - archeogit - blame excavation took 0.82 seconds
+
+$ docker run --rm --name archeogit -v ~/repositories/:/repositories/ samaritan/archeogit:latest blame /repositories/ffmpeg/ b97a4b658814b2de8b9f2a3bce491c002d34de31 --csv
+commit,path,contributor,frequency
+b97a4b658814b2de8b9f2a3bce491c002d34de31,libavcodec/cbs_av1.c,c8c81ac5026c20ce60860dc9aa905e5e1634bed1,22
+2021-10-18 16:26:59,399 - archeogit - blame excavation took 0.05 seconds
 ```
 
 ## Environment
