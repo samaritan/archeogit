@@ -8,7 +8,7 @@ setup(
     name='archeogit',
     version=VERSION,
     packages=['archeogit'],
-    install_requires=['jinja2~=2.10', 'pygit2~=0.28'],
+    install_requires=['jinja2~=2.10', 'pygit2~=0.28', 'pyyaml~=6.0'],
     entry_points={
         'console_scripts': [
             'archeogit = archeogit.__main__:main'

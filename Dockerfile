@@ -11,7 +11,7 @@ WORKDIR /samaritan/archeogit
 # Copy and Run archeogit
 COPY LICENSE .
 COPY VERSION .
-COPY config.json .
+COPY config.yaml .
 COPY setup.py .
 COPY archeogit archeogit/
 RUN pip install --no-cache-dir --quiet --trusted-host pypi.python.org -e .

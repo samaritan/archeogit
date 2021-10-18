@@ -16,7 +16,7 @@ def main():
     cli = CLI(commands.get_commands(), get_handlers())
     arguments = cli.get_arguments()
 
-    configuration = utilities.JSON.read(arguments.config_file)
+    configuration = utilities.YAML.read(arguments.config_file)
     _configure_logging(configuration)
     logger = logging.getLogger('archeogit')
 

@@ -10,7 +10,7 @@ If you desire isolation of the environment onto which `archeogit`, and its depen
 
 ## Configuration
 
-The utility uses a configuration file to configure logging. The default configuration file---`config.json`---gets you started with all messages with a level of `INFO` or higher being logged to the console. Use the `--config-file` option on the command line to use a custom configuration file.
+The utility uses a configuration file to configure logging. The default configuration file---`config.yaml`---gets you started with all messages with a level of `INFO` or higher being logged to the console. Use the `--config-file` option on the command line to use a custom configuration file.
 
 ## Usage
 
@@ -28,7 +28,7 @@ optional arguments:
   -h, --help            show this help message and exit
   --config-file CONFIG_FILE
                         Path to the configuration file. Default is
-                        config.json.
+                        config.yaml.
 
 Supported Commands:
   {blame}
