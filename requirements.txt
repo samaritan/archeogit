@@ -1,2 +1,3 @@
 jinja2~=2.10
 pygit2~=0.28
+pyyaml~=6.0
